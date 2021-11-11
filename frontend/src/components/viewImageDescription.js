@@ -6,6 +6,7 @@ import "./viewImageDescription.css"
 import ImageZoom from './imageZoom';
 
 function ViewImageDescription({product}) {
+    //just pushed
 
     const[image, setImage] = useState("")
     const[products,setProducts] = useState({})
