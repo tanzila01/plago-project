@@ -25,3 +25,14 @@ export const signin = userData => {
 
     return axios.post('/api/auth/signin', userData, config);
 }
+
+// export const adminSignin = data =>{
+//     console.log("data in api", data)
+//     const config = {
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json'
+//         }
+//     }
+//     return axios.post('api/auth/signin', data, config);
+// }

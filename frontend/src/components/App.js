@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import {BrowserRouter , Switch , Route} from 'react-router-dom';
 import Header from './Header';
@@ -15,9 +14,9 @@ import AdminEditProduct from './AdminEditProduct';
 import AdminHome from './AdminHome';
 import './App.css'
 import ViewImageDescription from './viewImageDescription';
+import AdminSignin from './adminSignin';
 
 const App = () => {
-
 
     return (
     <BrowserRouter>
@@ -30,6 +29,10 @@ const App = () => {
              <Route exact path="/signin">
              <Header />
               <Signin />
+            </Route>
+            <Route exact path="/adminSignin">
+              <Header/>
+              <AdminSignin/>
             </Route>
             <Route exact path="/signup">
              <Header />

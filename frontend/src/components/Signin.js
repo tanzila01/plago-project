@@ -58,10 +58,14 @@ const Signin = () => {
       signin(data)
         .then((response) => {
           setAuthentication(response.data.token, response.data.user);
+          console.log("user auth", response.data.user)
           let storage = getLocalStorage();
           if (storage && storage.role === 1) {
             history.push("/admin/dashboard");
-          } else {
+          // } else if (storage && storage.role === 0) {
+          //   history.push("/user/dashboard");
+          }
+           else {
             setFormData({
               ...formData,
               errorMsg: "It's seems you are not an admin",
