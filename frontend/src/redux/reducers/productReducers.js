@@ -16,7 +16,6 @@ const productReducer = (state = INITIAL_STATE, action) => {
         products: [...state.products, action.payload],
       };
     case GET_PRODUCTS:
-      console.log("checker products", ...action.payload)
       return {
         products: [...action.payload],
       };

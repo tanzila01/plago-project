@@ -1,6 +1,5 @@
 import React,{useEffect} from "react";
 import AdminHeader from './AdminHeader';
-import AdminActionButtons from './AdminActionButtons';
 import AdminCategoryModal from './AdminCategoryModal';
 import AdminProductModal from './AdminProductModal';
 import AdminViewCategoryModal from './AdminViewCategoryModal';
@@ -23,7 +22,6 @@ const AdminDashboard = () => {
   return (
     <section>
    <AdminHeader />
-   {/* <AdminActionButtons /> */}
   <AdminCategoryModal />
   <AdminProductModal />
   <AdminViewCategoryModal />

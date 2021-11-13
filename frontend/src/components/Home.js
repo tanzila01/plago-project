@@ -11,9 +11,9 @@ const Home = () => {
     <h1>Welcome To Admin Panel</h1>
     <p>Simple and unique Admin panel for your small Business startup</p>
     <div className="buttons">
-  <Link to="/signin"><button>Login </button></Link>
+  <Link to="/signin"><button>Admin Login</button></Link>
+  <Link to="/adminSignin"><button  className="registerBtn">User Login</button> </Link>
   <Link to="/signup"><button className="registerBtn">Register</button></Link>
-  <Link to="/adminSignin"><button>Admin Login</button> </Link>
     </div>
          </div>
 </div>

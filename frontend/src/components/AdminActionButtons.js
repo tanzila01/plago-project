@@ -1,14 +1,25 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import { getLocalStorage } from "../helpers/localStorage";
  
 const AdminActionButtons = ({proLength, catLength}) => {
 
+  const[role, setRole] = useState(false)
+  useEffect(() => {
+    let storage = getLocalStorage();
+    if(storage.role === 1){
+      setRole(true)
+    }
+  })
+  
   return (
     <div>
       <div className="bg-dark my-2">
         <div className="container">
           <div className="row pb-3">
-            <div className="col-md-4 my-1">
+
+    {role ? (
+        <>
+         <div className="col-md-4 my-1">
               <button
                 className="btn btn-outline-info w-100"
                 data-bs-toggle="modal"
@@ -26,6 +37,9 @@ const AdminActionButtons = ({proLength, catLength}) => {
                 <i className="fas fa-plus"> Add Food- {proLength}</i>
               </button>
             </div>
+        </>
+    ) : null}
+
             <div className="col-md-4 my-1">
               <button className="btn btn-outline-success w-100" 
                  data-bs-toggle="modal"

@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {Link, useLocation} from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import {Row, Col} from 'antd'
 import 'antd/dist/antd.css';
 import "./viewImageDescription.css"
 import ImageZoom from './imageZoom';
 
 function ViewImageDescription({product}) {
-    //just pushed
 
     const[image, setImage] = useState("")
     const[products,setProducts] = useState({})
@@ -19,25 +18,12 @@ function ViewImageDescription({product}) {
       }, []);
     
     const imageHandler = (item) => {
-        // alert("clicked")
-        console.log("item", item)
         setImage(item)
     }
 
-    // const location = useLocation();
-    // console.log("location", location)
-    // console.log("location state",location.state)
-    // console.log("prod name", location.state.product.productName)
-    // console.log("prod image", location.state.product.image)
-    // const image = location.state.product.image;
-    console.log("image", image)
-
     const prodFileName = location.state.product.fileName.map((file) => file.fileName);
-    console.log("prodfilesnames", prodFileName)
     const oneFileName = prodFileName.map((file) => file)
-    console.log("prods", products)
     
-
     return (
         <>
             <Row>

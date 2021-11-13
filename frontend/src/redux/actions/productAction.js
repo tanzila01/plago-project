@@ -30,9 +30,7 @@ export const createProduct = productData => async dispatch => {
 
   try{
     dispatch({type: START_LOADING})
-    console.log(" actions productData",productData)
   const response = await axios.post('/api/product' , productData)
-  console.log(" actions response",response)
   dispatch({type: STOP_LOADING})
   dispatch({type: SHOW_SUCCESS_MESSAGE , payload: response.data.successMessage})
   dispatch({type: CREATE_PRODUCTS , payload: response.data.product})
@@ -67,11 +65,8 @@ export const getCatProduct = (catid) => async dispatch => {
   try{
     dispatch({type: START_LOADING})
     const response = await axios.get(`/api/product/${catid}`)
-    console.log("cat response in actions", response)
   dispatch({type: STOP_LOADING})
-  console.log("before action", response.data)
   dispatch({type: GET_CATPRODUCT , payload: response.data})
-  console.log("after action", response.data)
 
   }catch(err){
       console.log("Error while fetching product" , err);

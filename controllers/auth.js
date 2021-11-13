@@ -36,7 +36,6 @@ exports.signupController = async (req,res) =>{
 
 
 exports.signinController = async (req,res) =>{
-  console.log("backend admin", req.body)
     const {email, password} = req.body
   try{
          const user = await User.findOne({email})
@@ -77,46 +76,41 @@ exports.signinController = async (req,res) =>{
   }
 }
 
+exports.adminSigninController = async (req, res) => {
+    const {email, password} = req.body
+    try{
+      const user = await User.findOne({email});
+      if(!user){
+          return res.status(400).json({
+              errorMessage: "invalid email or password"
+          })
+      }
+      const match = await bcrypt.compare(password, user.password)
+      if(!match){
+          return res.status(400).json({
+              errorMessage: "invalid email or password"
+          })
+      }
+      const payload = {
+          user: {
+              _id : user._id
+          }
+      }
 
-// exports.adminSigninController = async (req,res) =>{
+      jwt.sign(payload, jwtSecret , {expiresIn: jwtExpire} , (err, token) => {
+        if(err) console.log('Jwt error' , err);
+        const {_id , username , email , role} = user
+        
+     res.json({
+         token,
+         user: {_id , username , email , role}
+     })
+    } )
+    }catch(error){
+        console.log("Server Error while checking this user" , error);
+        res.status(500).json({
+            errorMessage: "Server Error while checking this user"
+        })
+  }
+}
 
-//     const {email, password} = req.body
-//     console.log("admin sign in in backend", req.body)
-//   try{
-//          const user = await User.findOne({email})
-//            if(!user){
-//                return res.status(400).json({
-//                    errorMessage: 'Invalid Email or Password'
-//                })
-//            }
-
-//             const isMatch = await bcrypt.compare(password , user.password)
-//             if(!isMatch){
-//                 return res.status(400).json({
-//                     errorMessage: 'Invalid Email or Password'
-//                 })
-//             }
-//     const payload = {
-//         user:{
-//             _id: user._id
-//         }
-//     }
-
-//       jwt.sign(payload , jwtSecret , {expiresIn: jwtExpire} , (err , token)=>{
-
-//             if(err) console.log('Jwt error' , err);
-//              const {_id , username , email , role} = user
-             
-//           res.json({
-//               token,
-//               user: {_id , username , email , role}
-//           })
-//       })
-
-//   }catch(error){
-//         console.log("Server Error while checking this user" , error);
-//         res.status(500).json({
-//             errorMessage: "Server Error while checking this user"
-//         })
-//   }
-// }

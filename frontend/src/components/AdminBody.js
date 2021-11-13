@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from 'react';
+import React, {useState}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Card from '../components/Card';
 import axios from "axios";
@@ -14,18 +14,14 @@ const AdminBody = () => {
     const{catProducts} = useSelector(state => state.catProducts)
     
     let {products} = useSelector(state => state.products)
-    // console.log("products admin body", products)
     const prodFileName = products.map((product) => product.fileName.map((file) => file.fileName))
-    // console.log("fileNames array", prodFileName)
     const oneFileName = prodFileName.map((file) => file[0])
-    // console.log("one filename", oneFileName)
     const updatedProducts = products.map((product, index) => {
         return {
             ...product,
             image: oneFileName[index]  
         }
     })
-    console.log("updatedProducts", updatedProducts)
 
     const { categories } = useSelector((state) => state.categories);
 
@@ -83,16 +79,6 @@ const AdminBody = () => {
                     }
                </>
            )}             
-
-            {/* filter products
-                    {products.filter(product => product.productCategory._id === productId).map(prods => (
-                        <>
-                           <Card key={prods._id} product={prods} />
-                        </>
-                    ))} */}
-         
-         
-
                   </div>
              </div>
     )

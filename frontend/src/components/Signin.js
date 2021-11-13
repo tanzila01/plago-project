@@ -58,7 +58,6 @@ const Signin = () => {
       signin(data)
         .then((response) => {
           setAuthentication(response.data.token, response.data.user);
-          console.log("user auth", response.data.user)
           let storage = getLocalStorage();
           if (storage && storage.role === 1) {
             history.push("/admin/dashboard");

@@ -11,7 +11,7 @@ validatorResult , signupController);
 router.post('/signin', signinValidator , 
 validatorResult , signinController);
 
-// router.post('/adminsignin', signinValidator , 
-// validatorResult , signinController);
+router.post('/adminsignin', signinValidator , 
+validatorResult , adminSigninController);
 
 module.exports = router

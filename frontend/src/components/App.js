@@ -42,7 +42,7 @@ const App = () => {
              <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
              <AdminRoute exact path="/admin/edit/product/:productId" component={AdminEditProduct} />
              <AdminRoute exact path="/admin/home" component={AdminHome} />
-             <AdminRoute exact path="/admin/dashboard/image" component={ViewImageDescription} />
+             <Route exact path="/image" component={ViewImageDescription} />
 
 
              <Route component={NotFound} />
