@@ -3,12 +3,16 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {deleteProducts} from '../redux/actions/productAction';
 import { getLocalStorage } from '../helpers/localStorage';
+// import AddToCart from './addToCart';
+// import {addToCart} from '../api/cart'
+import {addCart} from '../redux/actions/cart'
 
-const Card = ({product}) => {
-    
+
+const Card = ({product}) => {    
      // const openNewPage = () => {
     //     window.open('http://localhost:3000/admin/dashboard/image', "_blank")
     // }
+    const dispatch = useDispatch()
     const[role, setRole] = useState(false)
     useEffect(() => {
       let storage = getLocalStorage();
@@ -17,7 +21,15 @@ const Card = ({product}) => {
       }
     })
 
-    const dispatch = useDispatch()
+    const buyHandler = (data) => {
+      console.log("data of btn", data)
+      // addToCart(data)
+      // .then((response) => {
+      //   console.log("cart response", response)
+      // })
+      dispatch(addCart(data))
+    }
+
     return (
         <div className="col-md-4 my-3">
              <div className="card">
@@ -57,7 +69,7 @@ const Card = ({product}) => {
                         <i className="far fa-trash-alt pr-1"></i> Delete
                   </button>
                 </>
-              ) : null}
+              ) : <button onClick={() => buyHandler(product)}>buy</button>}
           </div>
              </div>
         </div> 

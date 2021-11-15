@@ -18,7 +18,7 @@ exports.create = async (req, res, next) => {
             // fileSize: fileSizeFormatter(element.size, 2)
         }
         filesArray.push(file);
-    });
+    }); 
 
       let product = new Product()
       product.fileName = filesArray

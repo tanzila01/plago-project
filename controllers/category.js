@@ -9,7 +9,7 @@ exports.create = async (req, res) => {
       return res.status(400).json({
         errorMessage: `${category} already exists`,
       });
-    }else{
+    }else{ 
 
     let newCategory = new Category();
     newCategory.category = category;
