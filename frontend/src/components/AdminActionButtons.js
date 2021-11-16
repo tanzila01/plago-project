@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { getLocalStorage } from "../helpers/localStorage";
+import { Link } from "react-router-dom";
  
 const AdminActionButtons = ({proLength, catLength}) => {
 
@@ -38,7 +39,17 @@ const AdminActionButtons = ({proLength, catLength}) => {
               </button>
             </div>
         </>
-    ) : null}
+    ) : (
+      <div className="col-md-4 my-1">
+              <button
+                className="btn btn-outline-warning w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#addFoodModal"
+              >
+                <Link to="/user/dashboard/cart">Your Cart</Link>
+              </button>
+            </div>
+    )}
 
             <div className="col-md-4 my-1">
               <button className="btn btn-outline-success w-100" 

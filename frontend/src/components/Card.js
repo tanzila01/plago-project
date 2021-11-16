@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {deleteProducts} from '../redux/actions/productAction';
 import { getLocalStorage } from '../helpers/localStorage';
-// import AddToCart from './addToCart';
-// import {addToCart} from '../api/cart'
 import {addCart} from '../redux/actions/cart'
 
 

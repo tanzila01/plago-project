@@ -15,6 +15,7 @@ import AdminHome from './AdminHome';
 import './App.css'
 import ViewImageDescription from './viewImageDescription';
 import AdminSignin from './adminSignin';
+import Cart from './Cart';
 
 const App = () => {
 
@@ -43,14 +44,13 @@ const App = () => {
              <AdminRoute exact path="/admin/edit/product/:productId" component={AdminEditProduct} />
              <AdminRoute exact path="/admin/home" component={AdminHome} />
              <Route exact path="/image" component={ViewImageDescription} />
-
+             <UserRoute exact path="/user/dashboard/cart" component={Cart} />
 
              <Route component={NotFound} />
 
          </Switch>
      </main>
     </BrowserRouter>
-
     )
 }
 

@@ -4,6 +4,7 @@ import {Row, Col} from 'antd'
 import 'antd/dist/antd.css';
 import "./viewImageDescription.css"
 import ImageZoom from './imageZoom';
+import Header from './Header';
 
 function ViewImageDescription({product}) {
 
@@ -26,6 +27,7 @@ function ViewImageDescription({product}) {
     
     return (
         <>
+        <Header/>
             <Row>
                 <Col span={10} className="col1">
                     <div className="images">

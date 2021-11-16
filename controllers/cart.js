@@ -21,3 +21,18 @@ exports.create = async(req, res) => {
         });
       }
 };
+
+exports.getall = async (req, res) => {
+  try {
+    const cart = await Cart.find({});
+
+    res.status(200).json({
+      cart,
+    });
+  } catch (error) {
+    console.log("Error when fetching category data ", error);
+    res.status(500).json({
+      errorMessage: "Please try later",
+    });
+  }
+};

@@ -1,0 +1,20 @@
+.cart-div{
+    padding-top: 30px;
+    padding-left: 110px;
+    padding-bottom: 110px;
+}
+.img{
+    width: 36%;
+}
+.cart-row{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 17px;
+}
+.cart-rows{
+    font-size: 20px;
+    font-weight: 200;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
