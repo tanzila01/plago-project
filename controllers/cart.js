@@ -36,3 +36,82 @@ exports.getall = async (req, res) => {
     });
   }
 };
+
+exports.update = async (req, res) => {
+  console.log("req.body", req.body)
+  const {_id, price} = req.body
+  console.log("req.id", _id)
+  try {
+      const cartId = await Cart.findByIdAndUpdate(_id,
+      { $inc: { quantity: 1, price: price }}
+  );    
+   res.status(200).json({
+    cartId,
+  });
+	} catch (err) {
+		console.log(err, 'cartController.upadte error');
+		res.status(500).json({
+			errorMessage: 'Please try again later',
+		});
+	}
+};
+
+
+// exports.updateDec = async (req, res) => {
+//   // console.log("req only", req)
+//   console.log("req.body", req.params)
+//   const {id} = req.params
+//   console.log("req.id", id)
+//   try {
+//       const cartId = await Cart.findByIdAndUpdate(id,
+//       { $inc: { quantity: -1}
+//      }
+//   );    
+//    res.status(200).json({
+//     cartId,
+//   });
+// 	} catch (err) {
+// 		console.log(err, 'cartController.upadte error');
+// 		res.status(500).json({
+// 			errorMessage: 'Please try again later',
+// 		});
+// 	}
+// };
+
+
+exports.updateDec = async (req, res) => {
+  // console.log("req only", req)
+  console.log("req.params", req.params)
+  console.log("req.body", req.body)
+  const {_id, price} = req.body
+  console.log("req.id", _id)
+  try {
+      const cartId = await Cart.findByIdAndUpdate(_id,
+      { $inc: { quantity: -1, price: -price}
+     }
+  );    
+   res.status(200).json({
+    cartId,
+  });
+	} catch (err) {
+		console.log(err, 'cartController.upadte error');
+		res.status(500).json({
+			errorMessage: 'Please try again later',
+		});
+	}
+};
+
+
+exports.delete = async(req, res) => {
+  console.log("req.body", req.params)
+  const {id} = req.params
+  console.log("req.id", id)
+  try{
+    await Cart.findByIdAndDelete(id)
+  }catch(err) {
+		console.log(err, 'cartController.upadte error');
+		res.status(500).json({
+			errorMessage: 'Please try again later',
+		});
+	}
+}

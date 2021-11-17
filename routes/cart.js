@@ -5,8 +5,10 @@ const CartController = require('../controllers/cart')
 
 route.post('/', CartController.create)
 route.get('/', CartController.getall)
-// route.put('/:productId', )
-// route.delete('/:productId', )
+route.put('/',CartController.update);
+// route.put('/:id',CartController.updateDec);
+route.put('/:id',CartController.updateDec);
+route.delete('/:id',CartController.delete);
 
 module.exports = route
 
