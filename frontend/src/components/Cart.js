@@ -7,7 +7,7 @@ import './cart.css'
 import axios from 'axios'
 import {findIndex, propEq, indexOf, clone, remove, update} from 'ramda'
 import {getAllCart, editCartInc} from '../redux/actions/cart'
-
+//if this is here
 function Cart() {
           const dispatch = useDispatch();
 
@@ -39,23 +39,43 @@ function Cart() {
         console.log("id in dec", id)
         console.log("dat in dec", dat)
         const response = await axios.put(`/api/cart/${id}`, dat)
-        const index = findIndex(propEq("_id", response.data.cartId._id))(data)
+        // const index = findIndex(propEq("_id", response.data.cartId._id))(data)
+        const index = findIndex(propEq("_id", dat._id))(data)
         console.log("index", index)
-        const {cartId} = response.data
-        const newData = update(index, cartId, data )
+        if(dat.quantity > 1){
+            const newQ = dat.quantity - 1
+        const newPrice = dat.price - dat.price/dat.quantity
+        const newDat = {
+            ...dat,
+            quantity: newQ,
+            price: newPrice
+        }
+        console.log("newDat", newDat)
+        const newData = update(index, newDat, data )
         console.log("newupdated data", newData)
         setData(newData)
+        }else{
+            setData(dat)
+        }
+        
       }
       
-      const increaseQuantity = async(id) => {
+      const increaseQuantity = async(dat) => {
         //  dispatch(editCartInc(id))
-        console.log("id in dec", id)
-        const response = await axios.put('/api/cart', id)
-        console.log("quant resp quantity",response.data.cartId)
-        const index = findIndex(propEq("_id", response.data.cartId._id))(data)
+        console.log("id in dec", dat)
+        const response = await axios.put('/api/cart', dat)
+        console.log("quant resp quantity",response.data)
+        const index = findIndex(propEq("_id", dat._id))(data)
         console.log("index", index)
-        const {cartId} = response.data
-        const newData = update(index, cartId, data )
+        const newQ = dat.quantity + 1
+        const newPrice = dat.price + dat.price/dat.quantity
+        const newDat = {
+            ...dat,
+            quantity: newQ,
+            price: newPrice
+        }
+        console.log("newDat", newDat)
+        const newData = update(index, newDat, data )
         console.log("newupdated data", newData)
         setData(newData)
     }
