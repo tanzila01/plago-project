@@ -1,5 +1,7 @@
 import {
-    ADD_TO_CART
+    ADD_TO_CART,
+    GET_CART, 
+    EDIT_CART_INC
     } from "../constants/cartConstants";
     
     const INITIAL_STATE = {
@@ -14,6 +16,15 @@ import {
             ...state,
             cart: [...state.cart , action.payload]
         };
+        case GET_CART:
+              return {
+                  ...state,
+                cart: action.payload
+              }
+        // case EDIT_CART_INC:
+        //   return {
+        //     cart: action.payload,
+        //   };
         default:
           return state;
       }

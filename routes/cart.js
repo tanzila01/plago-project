@@ -9,6 +9,7 @@ route.put('/',CartController.update);
 // route.put('/:id',CartController.updateDec);
 route.put('/:id',CartController.updateDec);
 route.delete('/:id',CartController.delete);
+route.delete('/',CartController.deleteAll);
 
 module.exports = route
 
