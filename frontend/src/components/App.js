@@ -16,6 +16,7 @@ import './App.css'
 import ViewImageDescription from './viewImageDescription';
 import AdminSignin from './adminSignin';
 import Cart from './Cart';
+import Checkout from './checkout';
 
 const App = () => {
 
@@ -45,6 +46,7 @@ const App = () => {
              <AdminRoute exact path="/admin/home" component={AdminHome} />
              <Route exact path="/image" component={ViewImageDescription} />
              <UserRoute exact path="/user/dashboard/cart" component={Cart} />
+             <UserRoute exact path="/user/dashboard/cart/checkout" component={Checkout} />
 
              <Route component={NotFound} />
 

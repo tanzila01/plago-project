@@ -41,41 +41,22 @@ exports.update = async (req, res) => {
   console.log("req.body", req.body)
   const {_id, price, quantity} = req.body
   console.log("req.id", _id)
+  try {
       const cartId = await Cart.findByIdAndUpdate(_id,
       { $inc: { quantity: 1, price: price/quantity }}
       );    
-      cartId.save(cartId)
-      .then((data) => {
-        res.status(200).json(data)
-      })
-     .catch( (err) => {
+      await cartId.save();
+    res.status(200).json({
+    cartId,
+  });
+  console.log("catID in backend", cartId)
+	} catch (err) {
 		console.log(err, 'cartController.upadte error');
 		res.status(500).json({
 			errorMessage: 'Please try again later',
 		});
-	})
+	}
 };
-
-// exports.update = async (req, res) => {
-//   console.log("req.body", req.body)
-//   const {_id, price, quantity} = req.body
-//   console.log("req.id", _id)
-//   try {
-//       const cartId = await Cart.findByIdAndUpdate(_id,
-//       { $inc: { quantity: 1, price: price/quantity }}
-//       );    
-//       await cartId.save();
-//     res.status(200).json({
-//     cartId,
-//   });
-//   console.log("catID in backend", cartId)
-// 	} catch (err) {
-// 		console.log(err, 'cartController.upadte error');
-// 		res.status(500).json({
-// 			errorMessage: 'Please try again later',
-// 		});
-// 	}
-// };
 
 
 // exports.updateDec = async (req, res) => {

@@ -36,18 +36,19 @@ export const getAllCart = () => async dispatch => {
     }
   }
 
-  // export const editCartInc = id => async dispatch => {
+  export const editCartInc = id => async dispatch => {
 
-  //   try{
-  //     dispatch({type: START_LOADING})
-  //     const response = await axios.get('/api/cart', id)
-  //   dispatch({type: STOP_LOADING})
-  //   dispatch({type: EDIT_CART_INC , payload: response.data})
+    try{
+      dispatch({type: START_LOADING})
+      const response = await axios.put('/api/cart', id)
+    dispatch({type: STOP_LOADING})
+    console.log("payload in actios", response.data.cartId)
+    dispatch({type: EDIT_CART_INC , payload: response.data.cartId})
   
-  //   }catch(err){
-  //       console.log("Error while delete product" , err);
-  //       dispatch({type: STOP_LOADING})
-  //       dispatch({type: SHOW_ERROR_MESSAGE , payload: err.response.data.errorMessage})
-  //   }
+    }catch(err){
+        console.log("Error while updating cart" , err);
+        dispatch({type: STOP_LOADING})
+        // dispatch({type: SHOW_ERROR_MESSAGE , payload: err.response.data.errorMessage})
+    }
   
-  // }
+  }

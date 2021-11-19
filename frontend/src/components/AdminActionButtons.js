@@ -41,13 +41,21 @@ const AdminActionButtons = ({proLength, catLength}) => {
         </>
     ) : (
       <div className="col-md-4 my-1">
-              <button
+              {/* <button
                 className="btn btn-outline-warning w-100"
                 data-bs-toggle="modal"
                 data-bs-target="#addFoodModal"
               >
                 <Link to="/user/dashboard/cart">Your Cart</Link>
-              </button>
+              </button> */}
+              
+                <Link to="/user/dashboard/cart">
+                <button
+                className="btn btn-outline-warning w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#addFoodModal"
+              >Your Cart</button>
+              </Link>
             </div>
     )}
 
@@ -55,7 +63,7 @@ const AdminActionButtons = ({proLength, catLength}) => {
               <button className="btn btn-outline-success w-100" 
                  data-bs-toggle="modal"
                 data-bs-target="#viewCategoryModal">
-                <i className="fas fa-money-check-alt"> View Category {catLength}</i>
+                <i className="fas fa-money-check-alt"> View Category{catLength}</i>
               </button>
             </div>
           </div>

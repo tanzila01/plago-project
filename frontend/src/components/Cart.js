@@ -7,6 +7,8 @@ import './cart.css'
 import axios from 'axios'
 import {findIndex, propEq, indexOf, clone, remove, update} from 'ramda'
 import {getAllCart, editCartInc} from '../redux/actions/cart'
+import { Link } from "react-router-dom";
+
 //if this is here
 function Cart() {
           const dispatch = useDispatch();
@@ -17,12 +19,7 @@ function Cart() {
         productName: "",
         quantity: 1
     }])
-    // const[dataCart, setDataCart] = useState([{
-    //     fileName: "",
-    //     price: 0,
-    //     productName: "",
-    //     quantity: 1
-    // }])
+
       useEffect(() => {
         getCart()
         .then((response) => {
@@ -32,16 +29,12 @@ function Cart() {
         // dispatch(getAllCart());
       }, [])
 
-    // const{cart} = useSelector(state => state.cart)
-    // console.log("cart", cart)
+    const{cart} = useSelector(state => state.cart)
+    console.log("cart", cart)
 
       const decreaseQuantity = async(id, dat) => {
-        console.log("id in dec", id)
-        console.log("dat in dec", dat)
         const response = await axios.put(`/api/cart/${id}`, dat)
-        // const index = findIndex(propEq("_id", response.data.cartId._id))(data)
         const index = findIndex(propEq("_id", dat._id))(data)
-        console.log("index", index)
         if(dat.quantity > 1){
             const newQ = dat.quantity - 1
         const newPrice = dat.price - dat.price/dat.quantity
@@ -50,9 +43,7 @@ function Cart() {
             quantity: newQ,
             price: newPrice
         }
-        console.log("newDat", newDat)
         const newData = update(index, newDat, data )
-        console.log("newupdated data", newData)
         setData(newData)
         }else{
             setData(dat)
@@ -60,13 +51,13 @@ function Cart() {
         
       }
       
+//       const increaseQuantity = async(id) => {
+//         dispatch(editCartInc(id))
+//    }
+
       const increaseQuantity = async(dat) => {
-        //  dispatch(editCartInc(id))
-        console.log("id in dec", dat)
         const response = await axios.put('/api/cart', dat)
-        console.log("quant resp quantity",response.data)
         const index = findIndex(propEq("_id", dat._id))(data)
-        console.log("index", index)
         const newQ = dat.quantity + 1
         const newPrice = dat.price + dat.price/dat.quantity
         const newDat = {
@@ -74,25 +65,23 @@ function Cart() {
             quantity: newQ,
             price: newPrice
         }
-        console.log("newDat", newDat)
         const newData = update(index, newDat, data )
-        console.log("newupdated data", newData)
         setData(newData)
     }
+
     const clearCartHandler = async() => {
-        console.log("clicked")
         setData([])
         await axios.delete('/api/cart')
-        console.log("removed")
     }
 
-      console.log("set data", data)
       const removeHandler = async(id, dat) => {
         const index = indexOf(dat, data)
         const newData = remove(index, 1, data)
          setData(newData)
           await axios.delete(`/api/cart/${id}`)
       }
+
+
     return (
         <div>
             <Header/>
@@ -127,13 +116,23 @@ function Cart() {
                         )}
                 <Row>
                     <Col offset={6} span={6}>
-                          Total Price
+                          Total Price:
                            { data.reduce(
                               (sum, product) => sum + product.price/product.quantity * product.quantity,0)
                               }
                     </Col>
                     <Col><button onClick={clearCartHandler}>Clear Cart</button></Col>
-                    <Col><button>Checkout</button></Col>
+                    <Col>
+                        <Link 
+                        to={{
+                         pathname: "/user/dashboard/cart/checkout",
+                         state: {data}
+                       }}>
+                            <button>Checkout</button>
+                        </Link>
+                        {/* <button totalPrice={data}>
+                        <Link to="/user/dashboard/cart/checkout">checkout</Link> </button> */}
+                    </Col>
                 </Row>
             </div>
         </div>

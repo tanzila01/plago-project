@@ -1,10 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { useLocation} from "react-router-dom";
 
-function Checkout({totalPrice}) {
+
+function Checkout({data}) {
+    // const[cartData,setCartData] = useState({})
+
+    const location = useLocation();
+    console.log("total price", location.state)
+
+    // useEffect(() => {
+    //     setCartData(location.state.Totaldata)
+    //   }, []);
+    //   console.log("setCArtData", setCartData)
     return (
         <div>
             checkout component
-            total price: {totalPrice}
         </div>
     )
 }
