@@ -38,6 +38,13 @@ const AdminActionButtons = ({proLength, catLength}) => {
                 <i className="fas fa-plus"> Add Food- {proLength}</i>
               </button>
             </div>
+            <div className="col-md-4">
+            <Link to="/admin/dashboard/orders">
+                <button
+                className="btn btn-outline-warning w-100"
+              >Orders</button>
+              </Link>
+            </div>
         </>
     ) : (
       <div className="col-md-4 my-1">

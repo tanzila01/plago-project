@@ -17,6 +17,7 @@ import ViewImageDescription from './viewImageDescription';
 import AdminSignin from './adminSignin';
 import Cart from './Cart';
 import Checkout from './checkout';
+import Orders from './orders'
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
              <Route exact path="/image" component={ViewImageDescription} />
              <UserRoute exact path="/user/dashboard/cart" component={Cart} />
              <UserRoute exact path="/user/dashboard/cart/checkout" component={Checkout} />
+             <AdminRoute exact path="/admin/dashboard/orders" component={Orders} />
 
              <Route component={NotFound} />
 

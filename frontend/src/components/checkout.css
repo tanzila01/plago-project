@@ -1,0 +1,27 @@
+.check-row{
+    row-gap: 0px;
+    align-items: center;
+    justify-content: center;
+    min-height: 15%;
+    margin-top: 2%;
+    background-color: #ececec;
+
+}
+.check-rows{
+    font-size: 22px;
+    font-family: bold;
+    color: white;
+    background-color: #212529;
+
+}
+.summary{
+    font-size: 22px;
+    font-family: bold;
+}
+.check-col{
+    background-color: #ececec;
+}
+.voucher{
+    background-color: #ececec;
+    align-items: center;
+}

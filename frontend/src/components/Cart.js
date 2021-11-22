@@ -9,7 +9,6 @@ import {findIndex, propEq, indexOf, clone, remove, update} from 'ramda'
 import {getAllCart, editCartInc} from '../redux/actions/cart'
 import { Link } from "react-router-dom";
 
-//if this is here
 function Cart() {
           const dispatch = useDispatch();
 
@@ -80,7 +79,9 @@ function Cart() {
          setData(newData)
           await axios.delete(`/api/cart/${id}`)
       }
-
+      const tPrice =  data.reduce(
+        (sum, product) => sum + product.price/product.quantity * product.quantity,0)
+      console.log("tprcie", tPrice)
 
     return (
         <div>
@@ -126,7 +127,7 @@ function Cart() {
                         <Link 
                         to={{
                          pathname: "/user/dashboard/cart/checkout",
-                         state: {data}
+                         state: {tPrice}
                        }}>
                             <button>Checkout</button>
                         </Link>
