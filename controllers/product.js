@@ -19,7 +19,8 @@ exports.create = async (req, res, next) => {
         }
         filesArray.push(file);
     }); 
-
+      console.log("making product here", req.body
+      )
       let product = new Product()
       product.fileName = filesArray
       product.productName = productName

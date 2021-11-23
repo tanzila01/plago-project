@@ -14,7 +14,7 @@ function Checkout() {
     useEffect(() => {
         getCart()
         .then((response) => {
-            console.log("get cart resp", response)
+            console.log("get cart resp", response.data.cart)
             setProduct(response.data.cart)
         })
       }, [])
@@ -31,12 +31,17 @@ function Checkout() {
 
     const location = useLocation();
     const price = location.state.tPrice
-    
+    const id = location.state.ids
+    console.log("second arg",location.state.ids)
+    console.log("3 arg",location.state.data)
+    const allData = location.state.data
+
     const[data, setData] = useState({
         address: "address here", 
         phone: "000000",
         emails: "abc@gmail.com",
-        total: price
+        total: price,
+        ids: allData
     })
     // const {checkouts} = useSelector(state => state.checkout)
     // console.log("useselector checkout", checkouts)

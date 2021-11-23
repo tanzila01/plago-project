@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
+const {ObjectId} = mongoose.Schema
+
 const checkoutAdminSchema = new mongoose.Schema({
-    // fileName:{
-    //     type: Array,
-    //     required: true,
-    // },
     address:{
         type:String,
         required: true,
@@ -19,7 +17,11 @@ const checkoutAdminSchema = new mongoose.Schema({
     total:{
       type: Number,
       required: true
-    }
+    },
+    ordered:{
+        type: Array,
+        required: true
+      }
 }, {timestamps: true})
 
 const Checkout = mongoose.model("Checkout" , checkoutAdminSchema)

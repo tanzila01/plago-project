@@ -14,6 +14,7 @@ const AdminBody = () => {
     const{catProducts} = useSelector(state => state.catProducts)
     
     let {products} = useSelector(state => state.products)
+    console.log("products to see", products)
     const prodFileName = products.map((product) => product.fileName.map((file) => file.fileName))
     const oneFileName = prodFileName.map((file) => file[0])
     const updatedProducts = products.map((product, index) => {

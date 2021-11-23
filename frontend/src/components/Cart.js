@@ -31,6 +31,9 @@ function Cart() {
     const{cart} = useSelector(state => state.cart)
     console.log("cart", cart)
 
+    const ids = data.map((prod) => prod._id)
+      console.log("ids", ids)
+
       const decreaseQuantity = async(id, dat) => {
         const response = await axios.put(`/api/cart/${id}`, dat)
         const index = findIndex(propEq("_id", dat._id))(data)
@@ -127,7 +130,7 @@ function Cart() {
                         <Link 
                         to={{
                          pathname: "/user/dashboard/cart/checkout",
-                         state: {tPrice}
+                         state: {tPrice, ids, data}
                        }}>
                             <button>Checkout</button>
                         </Link>

@@ -2,13 +2,19 @@ const Checkout = require('../models/checkoutAdmin')
 
 exports.create = async(req, res) => {
     console.log("req.body checkout", req.body)
-    const { address, phone, emails, total } = req.body;
+    const { address, phone, emails, total, ids } = req.body;
     try{
+      let array = [];
+     ids.forEach(id => {
+        array.push(id);
+    }); 
+       console.log("array", array)
         let newCheckout = new Checkout();
         newCheckout.address = address
         newCheckout.phone = phone
         newCheckout.email = emails
         newCheckout.total = total
+        newCheckout.ordered = array
         await newCheckout.save();
         res.status(200).json({
             successMessage : "added to orders",
@@ -24,7 +30,7 @@ exports.create = async(req, res) => {
 
 exports.getall = async (req, res) => {
   try {
-    const checkout = await Checkout.find({});
+    const checkout = await Checkout.find({})
 
     res.status(200).json({
       checkout,
@@ -35,6 +41,20 @@ exports.getall = async (req, res) => {
       errorMessage: "Please try later",
     });
   }
+};
+
+exports.getId = async (req, res) => {
+	try {
+		const id = req.params.id;
+		const checkout = await Category.findById(id);
+
+		res.json(checkout);
+	} catch (err) {
+		console.log(err, 'categoryController.read error');
+		res.status(500).json({
+			errorMessage: 'Please try again later',
+		});
+	}
 };
 // 
 // exports.update = async (req, res) => {

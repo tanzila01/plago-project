@@ -18,6 +18,8 @@ import AdminSignin from './adminSignin';
 import Cart from './Cart';
 import Checkout from './checkout';
 import Orders from './orders'
+import AcceptedOrders from './acceptedOrders';
+import DeclinedOrders from './declinedOrders';
 
 const App = () => {
 
@@ -49,6 +51,8 @@ const App = () => {
              <UserRoute exact path="/user/dashboard/cart" component={Cart} />
              <UserRoute exact path="/user/dashboard/cart/checkout" component={Checkout} />
              <AdminRoute exact path="/admin/dashboard/orders" component={Orders} />
+             <AdminRoute exact path="/admin/dashboard/orders/accepted" component={AcceptedOrders} />
+             <AdminRoute exact path="/admin/dashboard/orders/declined" component={DeclinedOrders} />
 
              <Route component={NotFound} />
 
