@@ -9,6 +9,7 @@ exports.create = async(req, res) => {
         newCart.productName = productName
         newCart.price = productPrice
         newCart.quantity = 1
+        newCart.status = "pending"
         await newCart.save();
         res.status(200).json({
             successMessage : "added to cart",

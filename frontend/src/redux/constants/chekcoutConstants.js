@@ -1,6 +1,6 @@
 export const ADD_TO_CHECKOUT = 'ADD_TO_CHECKOUT'
 export const GET_CHECKOUT = 'GET_CHECKOUT'
-// export const EDIT_CART_INC = 'EDIT_CART_INC' 
+export const ACCEPT_ORDER = 'ACCEPT_ORDER' 
 // export const EDIT_CART_DEC = 'EDIT_CART_DEC' 
 // export const DELETE_CART = 'DELETE_CART'
 // export const DELETE_ALL_CART = 'DELETE_ALL_CART'

@@ -18,6 +18,10 @@ const cartSchema = new mongoose.Schema({
     quantity:{
         type: Number,
         required : true,
+    },
+    status:{
+        type: String,
+        required: true
     }
 })
 const Cart = mongoose.model("Cart", cartSchema);

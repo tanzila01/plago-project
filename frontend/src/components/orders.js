@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {getAllCheckout} from '../redux/actions/checkout'
+import {getAllCheckout, acceptOrder} from '../redux/actions/checkout'
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from "react-router-dom";
 import {Row, Col} from 'antd'
 import './cart.css'
+import axios from 'axios'
 
 function Orders() {
     const dispatch = useDispatch()
@@ -13,10 +14,16 @@ function Orders() {
       }, [])
       const { checkout } = useSelector((state) => state.checkout);
       console.log("checkout", checkout)
-      const check = checkout.map((product)=> product.ordered.map((prod) => prod.price))
-      console.log("maps", check)
-    //   const newCheck = check.map((prod) => prod)
-    //   console.log("one map", newCheck)
+    //   const check = checkout.map((product)=> product.ordered.map((prod) => prod.price))
+
+      const acceptHandler = (check) => {
+          const id = check._id
+       dispatch(acceptOrder(id, check))
+      }
+      const declineHandler = async(check) =>{
+        const response = await axios.put('/api/checkout', check)
+      }
+
     return (
         <div>    
                  <Row className="order">
@@ -41,28 +48,25 @@ function Orders() {
                    {checkout.map((check) => {
                         return(
                             <>
-                                {check.ordered.map((prod) =>{ 
-                                return(
                                     <Row className="order-row">
                                         <Col span={3}>
-                                            <img className="img" src={`/uploads/${prod.fileName}`}/>
+                                            <img className="img" src={`/uploads/${check.fileName}`}/>
                                         </Col>
                                         <Col span={3}>
-                                            {prod.productName}<br/>
+                                            {check.productName}<br/>
                                         </Col>
                                         <Col span={2}>
-                                            {prod.quantity}
+                                            {check.quantity}
                                         </Col>
                                         <Col span={2}>
-                                            {prod.price}
+                                            {check.price}
                                         </Col>
                                         <Col span={4}>{check.address}</Col>
                                         <Col span={3}>{check.phone}</Col>
                                         <Col span={3}>{check.email}</Col>
-                                        <Col span={2}><button>accept</button></Col>
-                                        <Col span={2}><button>decline</button></Col>
+                                        <Col span={2}><button onClick={() => acceptHandler(check)}>accept</button></Col>
+                                        <Col span={2}><button onClick={() => declineHandler(check)}>decline</button></Col>
                                     </Row>
-                                )})}
                             </>
                         )
                     })}

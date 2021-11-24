@@ -1,6 +1,7 @@
 import {
     ADD_TO_CHECKOUT,
-    GET_CHECKOUT
+    GET_CHECKOUT, 
+    ACCEPT_ORDER
   } from "../constants/chekcoutConstants";
   
   const INITIAL_STATE = {
@@ -19,6 +20,10 @@ import {
                   ...state,
                 checkout: action.payload
               }
+        case ACCEPT_ORDER:
+            return {
+              checkout: action.payload,
+            };
       default:
         return state;
     }

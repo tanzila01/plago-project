@@ -36,6 +36,7 @@ function Checkout() {
     console.log("3 arg",location.state.data)
     const allData = location.state.data
 
+    console.log("All data", allData)
     const[data, setData] = useState({
         address: "address here", 
         phone: "000000",
@@ -90,6 +91,7 @@ function Checkout() {
         console.log("clicked")
         dispatch(addCheckout(data))
     }
+    
 
     return (
         <div>

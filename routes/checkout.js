@@ -6,8 +6,8 @@ const CheckoutController = require('../controllers/checkout')
 route.post('/', CheckoutController.create)
 route.get('/', CheckoutController.getall)
 route.get('/:id', CheckoutController.getId);
-// route.put('/',CartController.update);
-// route.put('/:id',CartController.updateDec);
+route.put('/:id',CheckoutController.update);
+route.put('/',CheckoutController.updateDecline);
 // route.delete('/:id',CartController.delete);
 // route.delete('/',CartController.deleteAll);
 
