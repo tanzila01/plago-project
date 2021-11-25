@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {getAllCheckout, acceptOrder} from '../redux/actions/checkout'
+import {getAllCheckout, acceptOrder, rejectOrder} from '../redux/actions/checkout'
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from "react-router-dom";
 import {Row, Col} from 'antd'
 import './cart.css'
 import axios from 'axios'
-
+import {remove, indexOf} from 'ramda'
+ 
 function Orders() {
     const dispatch = useDispatch()
     const[data, setData] = useState([])
@@ -17,11 +18,15 @@ function Orders() {
     //   const check = checkout.map((product)=> product.ordered.map((prod) => prod.price))
 
       const acceptHandler = (check) => {
+        // const index = indexOf(check, checkout)
+        // const newData = remove(index, 1, checkout)
+        //  setData(newData)
           const id = check._id
        dispatch(acceptOrder(id, check))
       }
       const declineHandler = async(check) =>{
-        const response = await axios.put('/api/checkout', check)
+          dispatch(rejectOrder(check))
+        // const response = await axios.put('/api/checkout', check)
       }
 
     return (
@@ -31,7 +36,7 @@ function Orders() {
                          <button className="order-btn">Accepted Orders</button>
                      </Link>
                      <Link to="/admin/dashboard/orders/declined">
-                         <button className="order-btn">Accepted Orders</button>
+                         <button className="order-btn">Declined Orders</button>
                      </Link>
                  </Row>
                  <Row className="order-rows">
@@ -48,7 +53,7 @@ function Orders() {
                    {checkout.map((check) => {
                         return(
                             <>
-                                    <Row className="order-row">
+                                    <Row className="order-row" key={check._id}>
                                         <Col span={3}>
                                             <img className="img" src={`/uploads/${check.fileName}`}/>
                                         </Col>

@@ -8,8 +8,6 @@ route.get('/', CheckoutController.getall)
 route.get('/:id', CheckoutController.getId);
 route.put('/:id',CheckoutController.update);
 route.put('/',CheckoutController.updateDecline);
-// route.delete('/:id',CartController.delete);
-// route.delete('/',CartController.deleteAll);
 
 module.exports = route
 

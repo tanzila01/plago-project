@@ -1,7 +1,7 @@
 import {START_LOADING , STOP_LOADING} from '../constants/loadingConstants';
 import {SHOW_ERROR_MESSAGE, SHOW_SUCCESS_MESSAGE} from '../constants/messageConstants';
 import axios from 'axios'
-import {ADD_TO_CHECKOUT, GET_CHECKOUT, ACCEPT_ORDER} from '../constants/chekcoutConstants'
+import {ADD_TO_CHECKOUT, GET_CHECKOUT, ACCEPT_ORDER, REJECT_ORDER} from '../constants/chekcoutConstants'
 
 
 // export const addCheckout = (data) => async dispatch => {
@@ -63,8 +63,8 @@ export const addCheckout = data => async dispatch => {
       dispatch({type: START_LOADING})
       const response = await axios.put( `/api/checkout/${id}`, product)
     dispatch({type: STOP_LOADING})
-    console.log("payload in actios", response.data)
-    // dispatch({type: ACCEPT_ORDER , payload: response.data.cartId})
+    console.log("payload in actios", response.data.cartId)
+    dispatch({type: ACCEPT_ORDER , payload: response.data.cartId})
   
     }catch(err){
         console.log("Error while updating cart" , err);
@@ -73,3 +73,18 @@ export const addCheckout = data => async dispatch => {
     }
   
   }
+
+  export const rejectOrder = (check) => async dispatch => {
+     try{
+       dispatch({type: START_LOADING})
+       const response = await axios.put( '/api/checkout', check)
+     console.log("payload in actios", response.data.cartId)
+     dispatch({type: ACCEPT_ORDER , payload: response.data.cartId})
+   
+     }catch(err){
+         console.log("Error while updating cart" , err);
+         dispatch({type: STOP_LOADING})
+         // dispatch({type: SHOW_ERROR_MESSAGE , payload: err.response.data.errorMessage})
+     }
+   
+   }

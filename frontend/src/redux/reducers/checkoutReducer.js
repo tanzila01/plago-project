@@ -3,7 +3,7 @@ import {
     GET_CHECKOUT, 
     ACCEPT_ORDER
   } from "../constants/chekcoutConstants";
-  
+  import {remove, indexOf} from 'ramda'
   const INITIAL_STATE = {
     checkout: [],
   };
@@ -21,8 +21,10 @@ import {
                 checkout: action.payload
               }
         case ACCEPT_ORDER:
+         console.log("payload red", action.payload)
+         const index = indexOf(action.payload, state.checkout)
             return {
-              checkout: action.payload,
+              checkout: remove(index, 1, state.checkout)
             };
       default:
         return state;

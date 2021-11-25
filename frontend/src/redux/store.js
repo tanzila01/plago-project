@@ -10,6 +10,8 @@ import productReducer from '../redux/reducers/productReducers';
 import catProductReducer from '../redux/reducers/catProduct';
 import cartReducer from '../redux/reducers/cart'
 import checkoutReducer from '../redux/reducers/checkoutReducer'
+import ordersReducer from '../redux/reducers/ordersReducer'
+import declinedOrdersReducer from '../redux/reducers/declined'
 
 const reducer =  combineReducers({
   loading: laodingReducer,
@@ -18,7 +20,8 @@ const reducer =  combineReducers({
   products: productReducer,
   catProducts: catProductReducer,
   cart: cartReducer,
-  checkout: checkoutReducer
+  checkout: checkoutReducer,
+  declinedOrders: declinedOrdersReducer
 })
 
 const initialState  = {}

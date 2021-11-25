@@ -65,7 +65,7 @@ exports.create = async(req, res) => {
 
 exports.getall = async (req, res) => {
   try {
-    const checkout = await Checkout.find({})
+    const checkout = await Checkout.find({status: "pending"})
 
     res.status(200).json({
       checkout,
@@ -77,6 +77,7 @@ exports.getall = async (req, res) => {
     });
   }
 };
+
 
 exports.getId = async (req, res) => {
 	try {

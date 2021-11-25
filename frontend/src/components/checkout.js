@@ -89,6 +89,7 @@ function Checkout() {
 
     const checkoutHandler = () => {
         console.log("clicked")
+        alert("your order has been placed");
         dispatch(addCheckout(data))
     }
     

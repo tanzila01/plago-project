@@ -11,6 +11,7 @@ const categoryRoutes = require('./routes/category');
 const productRoutes = require('./routes/product');
 const CartRoutes = require('./routes/cart')
 const CheckoutRoutes = require('./routes/checkout')
+const OrdersRoutes = require('./routes/orders')
 
 connectDB()
 app.use(cors())
@@ -22,6 +23,7 @@ app.use('/api/category' , categoryRoutes)
 app.use('/api/product' , productRoutes)
 app.use('/api/cart', CartRoutes)
 app.use('/api/checkout', CheckoutRoutes)
+app.use('/api/orders', OrdersRoutes)
 app.use('/uploads' , express.static('uploads') )
 
 // app.get('/' , (req,res) =>{
