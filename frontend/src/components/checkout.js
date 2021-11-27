@@ -70,15 +70,26 @@ function Checkout() {
 
     const saveHandler = () => {
         setInput(false)
-        setInputEmail(false)
-        setInputPhone(false)
         setData({
             ...data,
             address: checkoutData.address,
+        })
+    }
+    const savePhoneHandler = () => {
+        setInputPhone(false)
+        setData({
+            ...data,
             phone: checkoutData.phone,
+        })
+    }
+    const saveEmailHandler = () => {
+        setInputEmail(false)
+        setData({
+            ...data,
             emails: checkoutData.emails
         })
     }
+
 
     const cancelHandler = () => {
         setInput(false)
@@ -118,7 +129,7 @@ function Checkout() {
                         {inputPhone ? (
                             <>
                             <input type="number" name="phone" placeholder="phone" onChange={changeHandler} value={checkoutData.phone}></input>
-                            <button onClick={saveHandler}>save</button>
+                            <button onClick={savePhoneHandler}>save</button>
                             <button onClick={cancelHandler}>cancel</button>
                             </>
                         ) : (
@@ -132,7 +143,7 @@ function Checkout() {
                         {inputEmail ? (
                             <>
                             <input name="emails" placeholder="email" onChange={changeHandler} value={checkoutData.email}></input>
-                            <button onClick={saveHandler}>save</button>
+                            <button onClick={saveEmailHandler}>save</button>
                             <button onClick={cancelHandler}>cancel</button>
                             </>
                         ) : (

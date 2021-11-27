@@ -93,30 +93,6 @@ exports.getId = async (req, res) => {
 	}
 };
 
-// exports.update = async (req, res) => {
-//   const {_id, ordered } = req.body
-
-//   try {
-//       await Checkout.findByIdAndUpdate(_id).then( async (item) => {
-//         const audioIndex = item.ordered.map(item => item._id).indexOf(req.params.id);
-//         console.log("item index", item.ordered[audioIndex].status)
-//         const newItem = item.ordered[audioIndex]
-//         newItem.status = "accepted";
-//         console.log("item before saving", item)
-//         await item.save();
-//         res.status(200).json({
-//           item,
-//         });
-//         console.log("last respone", item)    
-//      });;     
-// 	} catch (err) {
-// 		console.log(err, 'chekcout Controller.upadte error');
-// 		res.status(500).json({
-// 			errorMessage: 'Please try again later',
-// 		});
-// 	}
-// };
-
 // 
 exports.update = async (req, res) => {
   console.log("req.body", req.body)
@@ -178,27 +154,3 @@ exports.updateDecline = async (req, res) => {
 	}
 };
 
-// exports.delete = async(req, res) => {
-//   console.log("req.body", req.params)
-//   const {id} = req.params
-//   console.log("req.id", id)
-//   try{
-//     await Cart.findByIdAndDelete(id)
-//   }catch(err) {
-// 		console.log(err, 'cartController.upadte error');
-// 		res.status(500).json({
-// 			errorMessage: 'Please try again later',
-// 		});
-// 	}
-// }
-
-// exports.deleteAll = async(req, res) => {
-//   try{
-//     await Cart.deleteMany({})
-//   }catch(err) {
-// 		console.log(err, 'cartController.upadte error');
-// 		res.status(500).json({
-// 			errorMessage: 'Please try again later',
-// 		});
-// 	}
-// }

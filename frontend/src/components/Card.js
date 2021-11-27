@@ -20,6 +20,7 @@ const Card = ({product}) => {
     })
 
     const buyHandler = (data) => {
+      alert("item added to cart")
       console.log("data of btn", data)
       // addToCart(data)
       // .then((response) => {

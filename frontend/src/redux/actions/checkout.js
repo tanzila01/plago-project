@@ -69,7 +69,6 @@ export const addCheckout = data => async dispatch => {
     }catch(err){
         console.log("Error while updating cart" , err);
         dispatch({type: STOP_LOADING})
-        // dispatch({type: SHOW_ERROR_MESSAGE , payload: err.response.data.errorMessage})
     }
   
   }
@@ -84,7 +83,6 @@ export const addCheckout = data => async dispatch => {
      }catch(err){
          console.log("Error while updating cart" , err);
          dispatch({type: STOP_LOADING})
-         // dispatch({type: SHOW_ERROR_MESSAGE , payload: err.response.data.errorMessage})
      }
    
    }

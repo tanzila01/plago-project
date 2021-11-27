@@ -25,14 +25,7 @@ function AcceptedOrders() {
 
     return (
         <div>    
-        {/* <Row className="order">
-            <Link to="/admin/dashboard/orders/accepted">
-                <button className="order-btn">Accepted Orders</button>
-            </Link>
-            <Link to="/admin/dashboard/orders/declined">
-                <button className="order-btn">Accepted Orders</button>
-            </Link>
-        </Row> */}
+
         <Row className="order-rows">
            <Col span={3}>Image</Col>
            <Col span={3}>Product</Col>
