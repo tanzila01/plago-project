@@ -1,0 +1,6 @@
+export const ADD_TO_CHECKOUT = 'ADD_TO_CHECKOUT'
+export const GET_CHECKOUT = 'GET_CHECKOUT'
+export const ACCEPT_ORDER = 'ACCEPT_ORDER' 
+export const REJECT_ORDER = 'REJECT_ORDER' 
+export const GET_ACCEPTED = 'GET_ACCEPTED'
+export const GET_DECLINED = 'GET_DECLINED'

@@ -1,0 +1,46 @@
+.signin-bg{
+    background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    height: 94vh;
+}
+.main-row{
+    padding-top: 30px;
+}
+.main-col{
+    background-color: #191d1f;
+    text-align: center;
+}
+.key-row{
+    margin-left: 41%;
+    margin-top: 3%;
+}
+.head-row{
+    justify-content: center;
+    margin-bottom: 4%;
+    margin-top: 2%;
+}
+.login-head{
+    color: white;
+}
+.inputs{
+    height: 40px;
+    background-color: #1a2226;
+    border: none;
+    width: 80%;
+}
+.input-row{
+    justify-content: center;
+}
+.btn-loginss{
+    border: 1px solid #0db8de;
+        color: #0db8de;
+        background-color: #191d1f;
+        font-size: 19px;
+}
+.input-rows{
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.error-row{
+    justify-content: center;
+}

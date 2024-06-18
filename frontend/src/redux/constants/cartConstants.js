@@ -1,0 +1,6 @@
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const GET_CART = 'GET_CART'
+export const EDIT_CART_INC = 'EDIT_CART_INC' 
+export const EDIT_CART_DEC = 'EDIT_CART_DEC' 
+export const DELETE_CART = 'DELETE_CART'
+export const DELETE_ALL_CART = 'DELETE_ALL_CART'

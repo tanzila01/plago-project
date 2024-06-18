@@ -1,0 +1,54 @@
+/* .col1{
+    background-color: aqua;
+} */
+/* .col2{
+    background-color: burlywood;
+} */
+.img-size{
+    width: 72px;
+}
+.img-display{
+    width: 76%;
+    height: 76%;
+}
+.images{
+    text-align: center;
+    margin-top: 38px;
+    margin-bottom: 38px;
+    overflow:hidden;
+}
+.thumb-img{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.img-div{
+    margin-right: 24px;    
+}
+.price{
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #8964d9;
+    border-radius: 10px;
+    color: white;
+    font-size: 36px;
+}
+.desc{
+    margin-top: 4px;
+    font-size: 15px;
+}
+.name{
+    margin-top: 37px;
+    font-size: 24px;
+}
+.img-div{
+    text-align: center;
+}
+.hover-zoom:hover {
+    transform: scale(1.25);
+  }
+.hover-zoom img {
+    transition: all 0.3s ease 0s;
+    width: 100%;
+  }
+
+  
